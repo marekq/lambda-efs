@@ -1,6 +1,7 @@
 from aws_cdk import (
     core,
     aws_ec2,
+    aws_lambda,
     aws_efs,
     aws_iam
 )
@@ -39,7 +40,6 @@ class LambdaEfsStack(core.Stack):
         # create efs access point
         efs_ap = aws_efs.AccessPoint(self, 
             "efs-accesspoint",
-            path = "/efs",
             file_system = efs_share,
             posix_user = efs_user,
             create_acl = efs_acl
@@ -54,6 +54,7 @@ class LambdaEfsStack(core.Stack):
             timeout = core.Duration.seconds(20),
             memory_size = 128,
 			retry_attempts = 0,
+            filesystem = aws_lambda.FileSystem.from_efs_access_point(efs_ap, '/mnt/efs'),
             tracing = aws_lambda.Tracing.ACTIVE,
             vpc = vpc,
             environment = {

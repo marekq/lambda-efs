@@ -9,7 +9,7 @@ setuptools.setup(
     name="lambda_efs",
     version="0.0.1",
 
-    description="An empty CDK Python app",
+    description="CDK Python app to deploy Lambda with EFS",
     long_description=long_description,
     long_description_content_type="text/markdown",
 
@@ -19,8 +19,8 @@ setuptools.setup(
     packages=setuptools.find_packages(where="lambda_efs"),
 
     install_requires=[
-        "aws-cdk.core==1.47.0",
-        "aws-cdk.aws_efs==1.47.0"
+        "aws-cdk.core==1.50.0",
+        "aws-cdk.aws_efs==1.50.0"
     ],
 
     python_requires=">=3.6",
