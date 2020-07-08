@@ -7,7 +7,7 @@ def handler(event, context):
     f.write("abc")
     f.close()
 
-    for root, dirs, files in os.walk('/mnt/efs'):
+    for root, dirs, files in os.walk('/mnt/efs/'):
         for filename in files:
             res.append(filename)
 

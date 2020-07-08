@@ -40,6 +40,7 @@ class LambdaEfsStack(core.Stack):
         # create efs access point
         efs_ap = aws_efs.AccessPoint(self, 
             "efs-accesspoint",
+            path = "/efs",
             file_system = efs_share,
             posix_user = efs_user,
             create_acl = efs_acl
